@@ -1,0 +1,45 @@
+<div class="todos" id="section">
+
+  <div id="list">
+    <form (submit)="addTodo($event)">
+      <input [(ngModel)]="newTodo" (keyup.enter)="newTodo=''" class="textfield" name="newTodo">
+      <button type="submit" [disabled]="newTodo===''">Add Todo</button>
+      </form>
+  </div>
+
+      <div [hidden]="newTodo" id="list">
+        Type in a new todo...
+      </div>
+
+      <div [hidden]="!newTodo" id="list">
+        <!-- Another two-way binding example -->
+        Typing: {{ newTodo }}
+      </div>
+
+      <ul>
+      <li *ngFor="let todo of todos; let i=index">
+        <h3>Incompleted task</h3>
+        
+        <input type="checkbox" class="checkbox" [(ngModel)]="todo.completed" />
+      <span [ngClass]="{'checked': todo.completed}">{{ todo.newTodo }}</span>
+       
+      <span (click)="deleteTodo(i)" class="delete-icon">[X]</span>
+<!-- addding -->
+    
+
+<!-- ending -->
+        </li>
+        </ul>
+
+        <div class="mtop20" id="list">
+      <button (click)="deleteSelectedTodos()">Delete Selected</button>
+      <!-- <span id="btn"><button (click)="">EDIT</button></span> -->
+      <!-- <button(click)="editselectedTodos()">EDIT</button> -->
+       </div>
+    
+</div>
+
+  <div class="section2">
+    <h2>Completed section</h2>
+    <!-- <checkbox(click)="addTodocompletedtask($event)"></checkbox> -->
+  </div> 
